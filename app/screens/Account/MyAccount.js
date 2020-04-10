@@ -6,7 +6,8 @@ import { View, Text } from "react-native";
 import UserGuest from "./UserGuest";
 import UserLogged from "./UserLogged";
 
-export default function MyAccount() {
+export default function MyAccount(props) {
+  const { navigation } = props;
   const [login, setLogin] = useState(null);
 
   useEffect(() => {
@@ -19,5 +20,5 @@ export default function MyAccount() {
     return <Loading isVisible={true} Text="Cargando" />;
   }
 
-  return login ? <UserLogged /> : <UserGuest />;
+  return login ? <UserLogged /> : <UserGuest navigation={navigation} />;
 }
