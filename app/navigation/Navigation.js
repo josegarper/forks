@@ -7,12 +7,13 @@ import { MaterialCommunityIcons } from "react-native-vector-icons";
 import RestaurantsScreen from "../screens/Restaurants";
 import TopRestaurantsScreen from "../screens/TopRestaurants";
 import SearchScreen from "../screens/Search";
-import MyAccountScreen from "../screens/MyAccount";
+import MyAccountScreen from "../screens/Account/MyAccount";
+import LoginScreen from "../screens/Account/Login";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-function TopRestaurantsStack() {
+function RestaurantsStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Restaurantes" component={RestaurantsScreen} />
@@ -20,7 +21,7 @@ function TopRestaurantsStack() {
   );
 }
 
-function RestaurantsStack() {
+function TopRestaurantsStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Top 5" component={TopRestaurantsScreen} />
@@ -28,16 +29,81 @@ function RestaurantsStack() {
   );
 }
 
+function SearchScreenStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Buscar" component={SearchScreen} />
+    </Stack.Navigator>
+  );
+}
+
+function MyAccountStack() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Mi cuenta" component={MyAccountScreen} />
+      <Stack.Screen name="Login" component={LoginScreen} />
+    </Stack.Navigator>
+  );
+}
+
 export default function Navigation() {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
+      <Tab.Navigator
+        initialRouteName="Buscar"
+        tabBarOptions={{
+          activeTintColor: "#e91e63",
+        }}
+      >
         <Tab.Screen
           name="Restaurantes"
+          component={RestaurantsStack}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons
+                name="compass-outline"
+                color={color}
+                size={size}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Top 5"
           component={TopRestaurantsStack}
           options={{
             tabBarIcon: ({ color, size }) => (
-              <MaterialCommunityIcons name="home" color={color} size={size} />
+              <MaterialCommunityIcons
+                name="star-outline"
+                color={color}
+                size={size}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Buscar"
+          component={SearchScreenStack}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons
+                name="magnify"
+                color={color}
+                size={size}
+              />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Mi cuenta"
+          component={MyAccountStack}
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <MaterialCommunityIcons
+                name="home-outline"
+                color={color}
+                size={size}
+              />
             ),
           }}
         />
