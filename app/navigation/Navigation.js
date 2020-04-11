@@ -54,7 +54,7 @@ export default function Navigation() {
       <Tab.Navigator
         initialRouteName="Buscar"
         tabBarOptions={{
-          activeTintColor: "#006a80",
+          activeTintColor: "#00a680",
         }}
       >
         <Tab.Screen
