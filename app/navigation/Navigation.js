@@ -41,7 +41,7 @@ function SearchScreenStack() {
 function MyAccountStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Mi cuenta" component={MyAccountScreen} />
+      <Stack.Screen name="MyAccount" component={MyAccountScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Register" component={RegisterScreen} />
     </Stack.Navigator>

@@ -8,6 +8,7 @@ import UserLogged from "./UserLogged";
 
 export default function MyAccount(props) {
   const { navigation } = props;
+
   const [login, setLogin] = useState(null);
 
   useEffect(() => {

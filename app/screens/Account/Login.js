@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import {
   StyleSheet,
   View,
@@ -8,9 +8,12 @@ import {
   Button,
 } from "react-native";
 import { Divider } from "react-native-elements";
-import Navigation from "../../navigation/Navigation";
+import LoginForm from "../../components/Account/LoginForm";
+import Toast from "react-native-easy-toast";
+import LoginFacebook from "../../components/Account/LoginFacebook";
 
 export default function Login(props) {
+  const toastRef = useRef();
   const { navigation } = props;
   return (
     <ScrollView>
@@ -20,14 +23,14 @@ export default function Login(props) {
         resizeMode="contain"
       />
       <View style={styles.viewContainer}>
-        <Text>Login Form</Text>
-        {/* <Text>Create account button</Text> */}
+        <LoginForm toastRef={toastRef} navigation={navigation} />
         <CreateAccount navigation={navigation} />
       </View>
       <Divider style={styles.divider} />
       <View style={styles.viewContainer}>
-        <Text>Login with facebook button</Text>
+        <LoginFacebook />
       </View>
+      <Toast ref={toastRef} position="center" opacity={0.5} />
     </ScrollView>
   );
 }
