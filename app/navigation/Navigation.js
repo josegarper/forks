@@ -9,6 +9,7 @@ import TopRestaurantsScreen from "../screens/TopRestaurants";
 import SearchScreen from "../screens/Search";
 import MyAccountScreen from "../screens/Account/MyAccount";
 import LoginScreen from "../screens/Account/Login";
+import RegisterScreen from "../screens/Account/Register";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -42,6 +43,7 @@ function MyAccountStack() {
     <Stack.Navigator>
       <Stack.Screen name="Mi cuenta" component={MyAccountScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Register" component={RegisterScreen} />
     </Stack.Navigator>
   );
 }
@@ -52,7 +54,7 @@ export default function Navigation() {
       <Tab.Navigator
         initialRouteName="Buscar"
         tabBarOptions={{
-          activeTintColor: "#e91e63",
+          activeTintColor: "#006a80",
         }}
       >
         <Tab.Screen
