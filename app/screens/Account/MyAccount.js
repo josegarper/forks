@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import * as firebase from "firebase";
 import Loading from "../../components/Loading";
-import { View, Text } from "react-native";
 import UserGuest from "./UserGuest";
 import UserLogged from "./UserLogged";
 

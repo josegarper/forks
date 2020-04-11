@@ -4,7 +4,6 @@ import { Input, Icon, Button } from "react-native-elements";
 import { validateEmail } from "../../utils/Validation";
 import * as firebase from "firebase";
 import Loading from "../Loading";
-import Navigation from "../../navigation/Navigation";
 
 export default function RegisterForm(props) {
   const { navigation } = props;

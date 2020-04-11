@@ -54,7 +54,6 @@ export default function InfoUser(props) {
           photoURL: result,
         };
         await firebase.auth().currentUser.updateProfile(update);
-        console.log("Imagen updated good");
       })
       .catch(() => {
         console.log("Error al recuperar el avatar del servidor");
