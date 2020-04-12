@@ -9,6 +9,10 @@ import { Logs } from "expo";
 export default function InfoUser(props) {
   const {
     userInfo: { photoURL, uid, displayName, email },
+    setReloadData,
+    toastRef,
+    setIsLoading,
+    setTextLoading,
   } = props;
 
   const changeAvatar = async () => {
@@ -19,17 +23,16 @@ export default function InfoUser(props) {
       resultPermission.permissions.cameraRoll.status;
 
     if (resultPermissionCamera === "denied") {
-      console.log("Es necesario aceptar los permisos de la galería");
+      toastRef.current.show("Es necesario aceptar los permisos de la galería");
     } else {
       const result = await ImagePicker.launchImageLibraryAsync({
         allowsEditing: true,
         aspect: [4, 3],
       });
       if (result.cancelled) {
-        console.log("Has cerrado la galería de imágenes");
+        toastRef.current.show("Has cerrado la galería de imágenes");
       } else {
         uploadImage(result.uri, uid).then(() => {
-          console.log("Imagen Subida correctamente.");
           updatePhotoURL(uid);
         });
       }
@@ -37,6 +40,8 @@ export default function InfoUser(props) {
   };
 
   const uploadImage = async (uri, nameImage) => {
+    setTextLoading("Actualizando avatar");
+    setIsLoading(true);
     const response = await fetch(uri);
     const blob = await response.blob();
 
@@ -54,9 +59,11 @@ export default function InfoUser(props) {
           photoURL: result,
         };
         await firebase.auth().currentUser.updateProfile(update);
+        setReloadData(true);
+        setIsLoading(false);
       })
       .catch(() => {
-        console.log("Error al recuperar el avatar del servidor");
+        toastRef.current.show("Error al recuperar el avatar del servidor");
       });
   };
 

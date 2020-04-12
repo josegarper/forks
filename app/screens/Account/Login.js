@@ -20,8 +20,8 @@ export default function Login(props) {
         <CreateAccount navigation={navigation} />
       </View>
       <Divider style={styles.divider} />
-      {/*  <View style={styles.viewContainer}>
-        <LoginFacebook ref={toastRef} navigation={navigation} />
+      {/*   <View style={styles.viewContainer}>
+        <LoginFacebook toastRef={toastRef} navigation={navigation} />
       </View> */}
       <Toast ref={toastRef} position="center" opacity={0.5} />
     </ScrollView>
