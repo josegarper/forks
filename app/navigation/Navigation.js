@@ -4,8 +4,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import { MaterialCommunityIcons } from "react-native-vector-icons";
 
-import RestaurantsScreen from "../screens/Restaurants";
-import TopRestaurantsScreen from "../screens/TopRestaurants";
+import RestaurantsScreen from "../screens/Restaurants/Restaurants";
+import TopRestaurantsScreen from "../screens/Restaurants/Restaurants";
+import AddRestaurantScreen from "../screens/Restaurants/AddRestaurant";
 import SearchScreen from "../screens/Search";
 import MyAccountScreen from "../screens/Account/MyAccount";
 import LoginScreen from "../screens/Account/Login";
@@ -18,6 +19,11 @@ function RestaurantsStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Restaurantes" component={RestaurantsScreen} />
+      <Stack.Screen
+        name="AddRestaurant"
+        component={AddRestaurantScreen}
+        options={{ title: "Nuevo Restaurante" }}
+      />
     </Stack.Navigator>
   );
 }
@@ -52,7 +58,7 @@ export default function Navigation() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName="Buscar"
+        initialRouteName="Restaurantes"
         tabBarOptions={{
           activeTintColor: "#00a680",
         }}
