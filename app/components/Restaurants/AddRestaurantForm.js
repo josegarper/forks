@@ -4,7 +4,7 @@ import { Icon, Avatar, Image, Input, Button } from "react-native-elements";
 import * as Permissions from "expo-permissions";
 import * as ImagePicker from "expo-image-picker";
 import * as Location from "expo-location";
-import MapView from "react-native-map";
+import MapView from "react-native-maps";
 import Modal from "../Modal";
 
 const widthScreen = Dimensions.get("window").width;
@@ -15,7 +15,7 @@ export default function AddRestaurantForm(props) {
   const [restaurantName, setRestaurantName] = useState("");
   const [restaurantAddress, setRestaurantAddress] = useState("");
   const [restaurantDescription, setRestaurantDescription] = useState("");
-  const [isVisibleMap, setIsVisibleMap] = useState(false);
+  const [isVisibleMap, setIsVisibleMap] = useState(true);
   const [locationRestaurant, setLocationRestaurant] = useState(null);
 
   return (
