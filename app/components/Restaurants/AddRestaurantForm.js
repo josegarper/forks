@@ -216,13 +216,13 @@ function Map(props) {
             showUserLocation={true}
             onRegionChange={(region) => setLocation(region)}
           >
-            {/* <MapView.Marker
+            <MapView.Marker
               coordinate={{
                 latitude: location.latitude,
                 longitude: location.longitude,
               }}
               draggable
-            /> */}
+            />
           </MapView>
         )}
         <View style={styles.viewMapBtn}>
