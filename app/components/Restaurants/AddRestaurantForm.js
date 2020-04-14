@@ -3,6 +3,7 @@ import { StyleSheet, View, ScrollView, Alert, Dimensions } from "react-native";
 import { Icon, Avatar, Image, Input, Button } from "react-native-elements";
 import * as Permissions from "expo-permissions";
 import * as ImagePicker from "expo-image-picker";
+import * as Location from "expo-location";
 import MapView from "react-native-map";
 import Modal from "../Modal";
 
@@ -182,6 +183,29 @@ function Map(props) {
   } = props;
   const [location, setLocation] = useState(null);
 
+  useEffect(() => {
+    (async () => {
+      const resultPermissions = await Permissions.askAsync(
+        Permissions.LOCATION
+      );
+      const statusPermissions = resultPermissions.permissions.location.status;
+
+      if (statusPermissions !== "granted") {
+        toastRef.current.show(
+          "Tienes que aceptar los permisos de localización"
+        );
+      } else {
+        const loc = await Location.getCurrentPositionAsync({});
+        setLocation({
+          latitude: loc.coords.latitude,
+          longitude: loc.coords.longitude,
+          latitudeDelta: 0.001,
+          longitudeDelta: 0.001,
+        });
+      }
+    })();
+  }, []);
+
   return (
     <Modal isVisible={isVisibleMap} setIsVisible={setIsVisibleMap}>
       <View>
@@ -192,13 +216,13 @@ function Map(props) {
             showUserLocation={true}
             onRegionChange={(region) => setLocation(region)}
           >
-            <MapView.Marker
+            {/* <MapView.Marker
               coordinate={{
                 latitude: location.latitude,
                 longitude: location.longitude,
               }}
               draggable
-            />
+            /> */}
           </MapView>
         )}
         <View style={styles.viewMapBtn}>

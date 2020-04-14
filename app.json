@@ -16,7 +16,7 @@
     },
     "assetBundlePatterns": ["**/*"],
     "android": {
-      "permissions": ["CAMERA_ROLL"]
+      "permissions": ["CAMERA_ROLL", "LOCATION"]
     },
     "ios": {
       "supportsTablet": true
