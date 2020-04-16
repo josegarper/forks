@@ -11,6 +11,7 @@ import SearchScreen from "../screens/Search";
 import MyAccountScreen from "../screens/Account/MyAccount";
 import LoginScreen from "../screens/Account/Login";
 import RegisterScreen from "../screens/Account/Register";
+import RestaurantScreen from "../screens/Restaurants/Restaurant";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -19,6 +20,13 @@ function RestaurantsStack() {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Restaurantes" component={RestaurantsScreen} />
+      <Stack.Screen
+        name="Restaurant"
+        component={RestaurantScreen}
+        options={({ route }) => ({
+          title: route.params.restaurant.item.restaurant.name,
+        })}
+      />
       <Stack.Screen
         name="AddRestaurant"
         component={AddRestaurantScreen}
