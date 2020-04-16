@@ -37,6 +37,7 @@ export default function ListRestaurants(props) {
 
 function Restaurant(props) {
   const { restaurant, navigation } = props;
+
   const { name, address, description, images } = restaurant.item.restaurant;
   const [imageRestaurant, setImageRestaurant] = useState(null);
 

@@ -42,7 +42,7 @@ export default function AddRestaurantForm(props) {
             location: locationRestaurant,
             images: arrayImages,
             rating: 0,
-            ratingTota: 0,
+            ratingTotal: 0,
             quantityVoting: 0,
             createAt: new Date(),
             createBy: firebase.auth().currentUser.uid,

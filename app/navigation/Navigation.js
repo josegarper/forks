@@ -12,6 +12,7 @@ import MyAccountScreen from "../screens/Account/MyAccount";
 import LoginScreen from "../screens/Account/Login";
 import RegisterScreen from "../screens/Account/Register";
 import RestaurantScreen from "../screens/Restaurants/Restaurant";
+import AddReviewRestaurantScreen from "../screens/Restaurants/AddReviewRestaurant";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -31,6 +32,11 @@ function RestaurantsStack() {
         name="AddRestaurant"
         component={AddRestaurantScreen}
         options={{ title: "Nuevo Restaurante" }}
+      />
+      <Stack.Screen
+        name="AddReviewRestaurant"
+        component={AddReviewRestaurantScreen}
+        options={{ title: "Nuevo comentario" }}
       />
     </Stack.Navigator>
   );
