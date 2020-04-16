@@ -7,7 +7,10 @@ export default function Map(props) {
 
   return (
     <MapView
-      style={styles.mapStyle}
+      style={{
+        width: "100%",
+        height: height,
+      }}
       initialRegion={location}
       onPress={() => console.log("Abriendo APP Map")}
     >
@@ -20,10 +23,3 @@ export default function Map(props) {
     </MapView>
   );
 }
-
-const styles = StyleSheet.create({
-  mapStyle: {
-    width: "100%",
-    height: height,
-  },
-});

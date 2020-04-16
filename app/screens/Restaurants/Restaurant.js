@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, ScrollView, Text, Dimensions } from "react-native";
-import { Rating } from "react-native-elements";
+import { Rating, ListItem } from "react-native-elements";
 import Carousel from "../../components/Carousel";
+import Map from "../../components/Map";
 import * as firebase from "firebase";
 
 const screenWidth = Dimensions.get("window").width;
@@ -42,6 +43,11 @@ export default function Restaurant(props) {
         description={restaurant.description}
         rating={restaurant.rating}
       />
+      <RestaurantInfo
+        location={restaurant.location}
+        name={restaurant.name}
+        address={restaurant.address}
+      />
     </ScrollView>
   );
 }
@@ -64,6 +70,51 @@ function TitleRestaurant(props) {
   );
 }
 
+function RestaurantInfo(props) {
+  const { location, name, address } = props;
+
+  const listInfo = [
+    {
+      text: address,
+      iconName: "map-marker",
+      iconType: "material-community",
+      action: null,
+    },
+    {
+      text: "684684865",
+      iconName: "phone",
+      iconType: "material-community",
+      action: null,
+    },
+    {
+      text: "retaurante@gmail.com",
+      iconName: "at",
+      iconType: "material-community",
+      action: null,
+    },
+  ];
+  return (
+    <View style={styles.viewRestaurantInfo}>
+      <Text style={styles.restaurantInfoTitle}>
+        Información sobre el restaurante
+      </Text>
+      <Map location={location} name={name} height={100} />
+      {listInfo.map((item, index) => (
+        <ListItem
+          key={index}
+          title={item.text}
+          leftIcon={{
+            name: item.iconName,
+            type: item.iconType,
+            color: "#00a680",
+          }}
+          containerStyle={styles.containerListItem}
+        />
+      ))}
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   viewBody: {
     flex: 1,
@@ -82,5 +133,18 @@ const styles = StyleSheet.create({
   descriptionRestaurant: {
     marginTop: 5,
     color: "grey",
+  },
+  viewRestaurantInfo: {
+    margin: 15,
+    marginTop: 25,
+  },
+  restaurantInfoTitle: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  containerListItem: {
+    borderBottomColor: "#c8c8c8",
+    borderBottomWidth: 1,
   },
 });
